@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bigdamnhero</title>
+    <title>obViously askin u out</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -89,7 +89,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .close-btn {
             font-size: 1.5em;
             cursor: pointer;
@@ -97,17 +96,16 @@
             border: none;
             color: white;
         }
-
         .modal-body {
             padding: 20px;
             text-align: center;
         }
-        
         .modal-body img {
             max-width: 100%;
             height: auto;
+            transition: opacity 0.5s ease, transform 0.5s ease;
         }
-   
+
         .modal-bg {
             display: none;
             position: fixed;
@@ -124,11 +122,11 @@
 
     <div class="clouds"></div>
 
-    <h1>Yes, I'm asking you out <br>(not literally...yet, 'cause I'm far FAAAR away from you)</h1>
-    <p>Do you want to watch a movie or explore each other’s cultures sometime?</p>
+    <h1>Obviously asking u out <br>(not literally...yet, 'cause I'm far FAAAR away from u)</h1>
+    <p>Do u wanna watch a movie and/or explore each other’s cultures sometime?</p>
 
-    <button class="yes" onclick="openModal()">❤️ Ja</button>
-    <button class="no" id="noButton" onclick="handleNo()">❌ Nein</button>
+    <button class="yes" onclick="openModal()">❤️ YUPPPP</button>
+    <button class="no" id="noButton" onclick="handleNo()">❌ Nah-uh</button>
 
     <div class="gif-container" id="gifContainer">
         <img class="cat-gif" src="https://i.imgur.com/yBtPAuf.gif" alt="Shy cat gif">
@@ -138,11 +136,11 @@
     <div class="modal-bg" id="modalBg"></div>
     <div class="modal" id="modal">
         <div class="modal-header">
-            Großartig, es ist ein Date! Sag mir einfach, wann, dann richten wir es ein. <br><br>Mein Discord: mwzra
+            Great, it's a date! Just tell me when, and we'll set it up. <br><br> Discord: mwzra.
             <button class="close-btn" onclick="closeModal()">×</button>
         </div>
         <div class="modal-body">
-            <img src="https://i.imgur.com/w5zJjdl.gif" alt="Dancing cat saying Yes!">
+            <img id="dancingCat" src="https://i.imgur.com/w5zJjdl.gif" alt="WHAAAT">
         </div>
     </div>
 
@@ -151,9 +149,35 @@
         const modal = document.getElementById('modal');
         const modalBg = document.getElementById('modalBg');
         const body = document.body;
+        const dancingCat = document.getElementById('dancingCat');
+
+        // Array of gifs
+        const gifs = [
+            'https://i.imgur.com/w5zJjdl.gif',
+            'https://i.imgur.com/dxCcFi1.gif', 
+            'https://i.imgur.com/7Rln5ad.gif' 
+        ];
+
+        let gifIndex = 0;
+
+        // change gif
+        function changeGif() {
+            gifIndex = (gifIndex + 1) % gifs.length; 
+            dancingCat.style.opacity = 0;
+            setTimeout(() => {
+                dancingCat.src = gifs[gifIndex]; 
+                dancingCat.style.transform = 'scale(1.1)'; 
+                dancingCat.style.opacity = 1; 
+                setTimeout(() => {
+                    dancingCat.style.transform = 'scale(1)'; 
+                }, 500);
+            }, 500);
+        }
+
+        setInterval(changeGif, 2000);
 
         function handleNo() {
-            alert("Are you sure? Maybe think again! 😅");
+            alert("NOT TAKING 'NO' AS AN ANSWER PLSPLSPLSPLS");
         }
 
         function getRandomPosition() {
